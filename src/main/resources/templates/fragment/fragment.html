@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragment Page</title>
+</head>
+<body>
+<nav th:fragment="navbar" class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div>
+            <a class="navbar-brand" th:text="#{choselanguage}"></a>
+            <form action="/" method="post" class="d-inline">
+                <input type="hidden" name="lang" value="uz">
+                <button class="btn btn-outline-primary" type="submit">Uz</button>
+            </form>
+            <form action="/" method="post" class="d-inline">
+                <input type="hidden" name="lang" value="en">
+                <button class="btn btn-outline-success" type="submit">Eng</button>
+            </form>
+        </div>
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" th:placeholder="#{search}" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit" th:text="#{search}"></button>
+        </form>
+    </div>
+</nav>
+</body>
+</html>

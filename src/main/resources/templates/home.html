@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{homepage}"></title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body class="text-center">
+<nav th:replace="~{fragment/fragment :: navbar}"></nav>
+<h1 th:text="#{homepage}"></h1>
+
+<script src="/js/bootstrap.bundle.js"></script>
+</body>
+</html>
