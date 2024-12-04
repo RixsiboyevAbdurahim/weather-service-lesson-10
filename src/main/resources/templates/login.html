@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{loginpage}"></title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body class="text-center">
+<nav th:replace="~{fragment/fragment :: navbar}"></nav>
+<h1 th:text="#{loginpage}"></h1>
+<hr>
+<div th:if="${error}">
+    <h2 style="color: red" th:text="#{${error}}"></h2>
+</div>
+<div th:if="${logout}">
+    <h2 style="color: green" th:text="#{${logout}}"></h2>
+</div>
+<div th:if="${register_success}">
+    <h2 style="color: green" th:text="#{${register_success}}"></h2>
+</div>
+<form method="post" >
+    <label th:text="#{username}"></label>
+    <input type="text" name="username" th:placeholder="#{username}" autofocus>
+    <label th:text="#{password}"></label>
+    <input type="password" name="password" th:placeholder="#{password}" autofocus><br><br>
+    <button class="btn btn-success" type="submit" th:text="#{button_login}"></button>
+    <button class="btn btn-secondary" type="reset" th:text="#{button_reset}"></button>
+</form>
+<hr>
+<br>
+<a class="btn btn-primary" th:href="@{/register}" th:text="#{registerpage}"></a>
+<script src="/js/bootstrap.bundle.js"></script>
+</body>
+</html>

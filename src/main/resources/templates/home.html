@@ -8,7 +8,9 @@
 <body class="text-center">
 <nav th:replace="~{fragment/fragment :: navbar}"></nav>
 <h1 th:text="#{homepage}"></h1>
-
+<hr>
+<a class="btn btn-primary" th:href="@{#}">Continue</a> ||
+<a class="btn btn-danger" th:href="@{/logout}" th:text="#{button_log_out}"></a>
 <script src="/js/bootstrap.bundle.js"></script>
 </body>
 </html>

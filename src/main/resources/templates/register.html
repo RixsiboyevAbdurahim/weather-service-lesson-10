@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{registerpage}"></title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body class="text-center">
+<nav th:replace="~{fragment/fragment :: navbar}"></nav>
+<h1 th:text="#{registerpage}"></h1>
+<hr>
+<div th:if="${register_failed}">
+    <h2 style="color:red;" th:text="#{${register_failed}}"></h2>
+</div>
+<form action="/register" method="post">
+    <label th:text="#{username}"></label>
+    <input type="text" name="username" th:placeholder="#{username}" autofocus><br>
+    <label th:text="#{password}"></label>
+    <input type="password" name="password" th:placeholder="#{password}" autofocus><br>
+    <label th:text="#{confirm_password}"></label>
+    <input type="password" name="confirm_password" th:placeholder="#{confirm_password}" autofocus><br><br>
+    <button class="btn btn-success" type="submit" th:text="#{button_register}"></button>
+    <button class="btn btn-secondary" type="reset" th:text="#{button_reset}"></button>
+</form>
+<hr>
+<br>
+<a class="btn btn-primary" th:href="@{/login}" th:text="#{loginpage}"></a>
+<script src="/js/bootstrap.bundle.js"></script>
+</body>
+</html>
