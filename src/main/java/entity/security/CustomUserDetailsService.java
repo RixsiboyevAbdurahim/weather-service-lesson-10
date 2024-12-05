@@ -3,6 +3,8 @@ package entity.security;
 import entity.user.AuthUser;
 import entity.user.AuthUserDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,6 +26,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AuthUser authUser = authUserDao.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
-        return new User(authUser.getUsername(), authUser.getPassword(), new ArrayList<>());
+
+        ArrayList<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + authUser.getRole()));
+        return new User(authUser.getUsername(), authUser.getPassword(), authorities);
     }
 }

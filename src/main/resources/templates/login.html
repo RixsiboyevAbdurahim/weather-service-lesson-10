@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title th:text="#{loginpage}"></title>
     <link rel="stylesheet" href="/css/bootstrap.css">
+    <link th:replace="~{fragment/fragment :: css}">
 </head>
 <body class="text-center">
 <nav th:replace="~{fragment/fragment :: navbar}"></nav>
@@ -14,6 +15,9 @@
 </div>
 <div th:if="${logout}" class="alert alert-success">
     <h2 style="color: green" th:text="#{${logout}}"></h2>
+</div>
+<div th:if="${register_success}" class="alert alert-success">
+    <h2 style="color: green" th:text="#{${register_success}}"></h2>
 </div>
 <form method="post" >
     <label th:text="#{username}"></label>
@@ -26,6 +30,5 @@
 <hr>
 <br>
 <a class="btn btn-primary" th:href="@{/register}" th:text="#{registerpage}"></a>
-<script src="/js/bootstrap.bundle.js"></script>
 </body>
 </html>

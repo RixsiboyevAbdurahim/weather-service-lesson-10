@@ -2,7 +2,7 @@ package entity.control;
 
 import entity.user.AuthUser;
 import entity.user.AuthUserDao;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,25 +11,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class HomeController {
+@RequiredArgsConstructor
+public class SecurityMyController {
 
     private final AuthUserDao authUserDao;
     private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public HomeController(AuthUserDao authUserDao, PasswordEncoder passwordEncoder) {
-        this.authUserDao = authUserDao;
-        this.passwordEncoder = passwordEncoder;
-    }
-
-    @GetMapping("")
+    @GetMapping("/")
     public String home() {
-        return "home";
+        return "/home";
     }
 
-    @PostMapping("")
-    public String postHome() {
-        return "home";
+    @PostMapping("/")
+    public String homePost() {
+        return "/home";
     }
 
 
@@ -60,15 +55,23 @@ public class HomeController {
             @RequestParam("confirm_password") String confirm_password,
             Model model
     ) {
-        if (password.equals(confirm_password)) {
+
+        if (password.equals(confirm_password) && !password.isEmpty() && !username.isEmpty()) {
             AuthUser authUser = AuthUser.builder()
                     .username(username)
                     .password(passwordEncoder.encode(password))
                     .role("USER")
                     .build();
-            authUserDao.save(authUser);
-            System.out.println("You successfully registered!");
-            return "redirect:/login";
+            AuthUser user = authUserDao.findByUsername(username).orElse(null);
+            if (user == null) {
+                authUserDao.save(authUser);
+                System.out.println("You successfully registered!");
+                model.addAttribute("register_success", "register_success");
+                return "/login";
+            } else {
+                model.addAttribute("user_exists", "user_exists");
+                return "register";
+            }
         }
 
         model.addAttribute("register_failed", "register_failed");

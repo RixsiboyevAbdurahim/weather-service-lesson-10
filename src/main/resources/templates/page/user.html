@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>User Page</title>
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link th:replace="~{fragment/fragment :: css}">
 </head>
 <body class="text-center">
 <nav th:replace="~{fragment/fragment :: navbar}"></nav>
-<h1>Home Page</h1>
+<h1>User Page</h1>
 <hr>
-
-<a class="btn btn-success" th:href="@{/admin}">Admin Page</a>
-<a class="btn btn-primary" th:href="@{/user}">User Page</a><br>
-
 <a class="btn btn-danger" th:href="@{/logout}" th:text="#{button_log_out}"></a>
 </body>
 </html>
