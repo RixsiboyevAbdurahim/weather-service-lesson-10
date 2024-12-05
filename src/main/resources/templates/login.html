@@ -9,14 +9,11 @@
 <nav th:replace="~{fragment/fragment :: navbar}"></nav>
 <h1 th:text="#{loginpage}"></h1>
 <hr>
-<div th:if="${error}">
+<div th:if="${error}" class="alert alert-danger">
     <h2 style="color: red" th:text="#{${error}}"></h2>
 </div>
-<div th:if="${logout}">
+<div th:if="${logout}" class="alert alert-success">
     <h2 style="color: green" th:text="#{${logout}}"></h2>
-</div>
-<div th:if="${register_success}">
-    <h2 style="color: green" th:text="#{${register_success}}"></h2>
 </div>
 <form method="post" >
     <label th:text="#{username}"></label>

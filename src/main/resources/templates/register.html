@@ -9,7 +9,7 @@
 <nav th:replace="~{fragment/fragment :: navbar}"></nav>
 <h1 th:text="#{registerpage}"></h1>
 <hr>
-<div th:if="${register_failed}">
+<div th:if="${register_failed}" class="alert alert-danger">
     <h2 style="color:red;" th:text="#{${register_failed}}"></h2>
 </div>
 <form action="/register" method="post">

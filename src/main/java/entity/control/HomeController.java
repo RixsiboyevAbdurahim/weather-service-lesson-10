@@ -1,5 +1,9 @@
 package entity.control;
 
+import entity.user.AuthUser;
+import entity.user.AuthUserDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +12,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
+
+    private final AuthUserDao authUserDao;
+    private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public HomeController(AuthUserDao authUserDao, PasswordEncoder passwordEncoder) {
+        this.authUserDao = authUserDao;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @GetMapping("")
     public String home() {
@@ -47,12 +60,16 @@ public class HomeController {
             @RequestParam("confirm_password") String confirm_password,
             Model model
     ) {
-
-        System.out.println("username = " + username);
-        System.out.println("password = " + password);
-        System.out.println("confirm_password = " + confirm_password);
-
-        if (password.equals(confirm_password)) return "redirect:/login";
+        if (password.equals(confirm_password)) {
+            AuthUser authUser = AuthUser.builder()
+                    .username(username)
+                    .password(passwordEncoder.encode(password))
+                    .role("USER")
+                    .build();
+            authUserDao.save(authUser);
+            System.out.println("You successfully registered!");
+            return "redirect:/login";
+        }
 
         model.addAttribute("register_failed", "register_failed");
         return "register";
