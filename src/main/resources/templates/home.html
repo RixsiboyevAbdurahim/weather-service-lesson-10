@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
@@ -11,9 +12,13 @@
 <h1>Home Page</h1>
 <hr>
 
-<a class="btn btn-success" th:href="@{/admin}">Admin Page</a>
-<a class="btn btn-primary" th:href="@{/user}">User Page</a><br>
+<div sec:authorize="hasRole('ADMIN')">
+    <a class="btn btn-success" th:href="@{/admin}">Admin Page</a>
+</div>
 
-<a class="btn btn-danger" th:href="@{/logout}" th:text="#{button_log_out}"></a>
+<div sec:authorize="hasRole('USER')">
+    <a class="btn btn-primary" th:href="@{/user}">User Page</a><br>
+</div>
+
 </body>
 </html>
