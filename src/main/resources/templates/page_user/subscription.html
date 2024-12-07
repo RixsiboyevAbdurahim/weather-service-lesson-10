@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscription Page</title>
+    <link th:replace="~{fragment/fragment :: css}">
+</head>
+<body class="text-center">
+<nav th:replace="~{fragment/fragment :: navbar}"></nav>
+<h1>Subscription Page</h1>
+<h2 style="color: green;" class="alert-success" th:if="${subscription}" th:text="${subscription}"></h2>
+<hr>
+<a class="btn btn-primary" th:href="@{/user}">User Page</a>
+<a class="btn btn-danger" th:href="@{/}">Home Page</a><br>
+</body>
+</html>

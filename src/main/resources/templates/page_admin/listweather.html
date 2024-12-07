@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>List Weather</title>
+    <link th:replace="~{fragment/fragment :: css}">
+</head>
+<body class="text-center">
+<nav th:replace="~{fragment/fragment :: navbar}"></nav>
+<h1>List Weather</h1>
+<hr>
+<h2 class="alert-success" style="color: green" th:text="${city}"></h2>
+<table class="table">
+    <tr>
+        <th>Temperature</th>
+        <th>Description</th>
+        <th>Date</th>
+    </tr>
+    <th:block th:each="weather : ${weatherList}">
+        <tr>
+            <td th:text="${weather.getTemperature()}"></td>
+            <td th:text="${weather.getDescription()}"></td>
+            <td th:text="${weather.getDate()}"></td>
+        </tr>
+    </th:block>
+</table>
+<hr>
+<a class="btn btn-primary" th:href="@{/admin}">Admin Page</a>
+<a class="btn btn-danger" th:href="@{/listcities}">Back</a><br>
+</body>
+</html>

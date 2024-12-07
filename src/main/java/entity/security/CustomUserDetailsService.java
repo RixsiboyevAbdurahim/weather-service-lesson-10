@@ -1,7 +1,7 @@
 package entity.security;
 
-import entity.user.AuthUser;
-import entity.user.AuthUserDao;
+import entity.models.user.AuthUser;
+import entity.models.user.AuthUserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

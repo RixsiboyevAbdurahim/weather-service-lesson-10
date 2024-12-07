@@ -1,17 +1,19 @@
-package entity.user;
+package entity.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AuthUser {
-    private Integer id;
+public class CustomUser {
+
     private String username;
-    private String password;
-    private String role;
+    private String name;
+    private LocalDate subscription_date;
 }

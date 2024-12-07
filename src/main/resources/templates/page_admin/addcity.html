@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Add City Page</title>
+    <link th:replace="~{fragment/fragment :: css}">
+</head>
+<body class="text-center">
+<nav th:replace="~{fragment/fragment :: navbar}"></nav>
+<h1>Add City Page</h1>
+<hr>
+<form method="post" action="/addcity">
+    <label>City Name</label>
+    <input type="text" name="cityName" placeholder="City Name" autofocus><br><br>
+    <button class="btn btn-success" type="submit" th:text="'Save'"></button>
+    <button class="btn btn-secondary" type="reset" th:text="#{button_reset}"></button>
+</form>
+<br>
+<a class="btn btn-primary" href="/listcities">Back</a>
+</body>
+</html>

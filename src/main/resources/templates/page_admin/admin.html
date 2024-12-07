@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link th:replace="~{fragment/fragment :: css}">
+</head>
+<body class="text-center">
+<nav th:replace="~{fragment/fragment :: navbar}"></nav>
+<h1>Admin Page</h1>
+<hr>
+<a class="btn btn-primary" th:href="@{/listusers}">User List</a>
+<a class="btn btn-warning" th:href="@{/userdetails}">User Details</a>
+<a class="btn btn-success" th:href="@{/listcities}">Cities List</a><br>
+<hr>
+<a class="btn btn-danger" th:href="@{/}">Home Page</a><br>
+</body>
+</html>

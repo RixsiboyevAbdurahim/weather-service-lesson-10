@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>List Subscription Page</title>
+    <link th:replace="~{fragment/fragment :: css}">
+</head>
+<body class="text-center">
+<nav th:replace="~{fragment/fragment :: navbar}"></nav>
+<h1>List Subscription Page</h1>
+<hr>
+<table class="table">
+    <tr>
+        <th>Date</th>
+        <th>Temperature</th>
+        <th>Description</th>
+    </tr>
+    <th:block>
+        <tr th:each="weather : ${weathers}" th:object="${weather}">
+            <td th:text="*{date}"></td>
+            <td th:text="*{temperature}"></td>
+            <td th:text="*{description}"></td>
+        </tr>
+    </th:block>
+</table>
+<hr>
+<a class="btn btn-primary" th:href="@{/user}">User Page</a>
+<a class="btn btn-danger" th:href="@{/}">Home Page</a><br>
+</body>
+</html>

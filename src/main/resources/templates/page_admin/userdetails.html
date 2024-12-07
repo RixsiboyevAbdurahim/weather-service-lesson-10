@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>User Detail Page</title>
+    <link th:replace="~{fragment/fragment :: css}">
+</head>
+<body class="text-center">
+<nav th:replace="~{fragment/fragment :: navbar}"></nav>
+<h1>User Detail Page</h1>
+<a class="btn btn-secondary" th:href="@{/addcity}">Add new City</a>
+<hr>
+<table class="table">
+    <tr>
+        <th>User Name</th>
+        <th>City Name</th>
+        <th>Subsciption Date</th>
+    </tr>
+    <th:block>
+        <tr th:each="user : ${customUsers}" th:object="${user}">
+            <td th:text="*{username}"></td>
+            <td th:text="*{name}"></td>
+            <td th:text="*{subscription_date}"></td>
+        </tr>
+    </th:block>
+</table>
+<hr>
+<a class="btn btn-primary" th:href="@{/admin}">Admin Page</a>
+<a class="btn btn-danger" th:href="@{/}">Home Page</a><br>
+</body>
+</html>

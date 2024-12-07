@@ -1,7 +1,7 @@
 package entity.control;
 
-import entity.user.AuthUser;
-import entity.user.AuthUserDao;
+import entity.models.user.AuthUser;
+import entity.models.user.AuthUserDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

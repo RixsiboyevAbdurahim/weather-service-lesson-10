@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <title th:text="#{loginpage}"></title>
@@ -8,6 +9,7 @@
 </head>
 <body class="text-center">
 <nav th:replace="~{fragment/fragment :: navbar}"></nav>
+
 <h1 th:text="#{loginpage}"></h1>
 <hr>
 <div th:if="${error}" class="alert alert-danger">
@@ -19,7 +21,7 @@
 <div th:if="${register_success}" class="alert alert-success">
     <h2 style="color: green" th:text="#{${register_success}}"></h2>
 </div>
-<form method="post" >
+<form method="post">
     <label th:text="#{username}"></label>
     <input type="text" name="username" th:placeholder="#{username}" autofocus>
     <label th:text="#{password}"></label>

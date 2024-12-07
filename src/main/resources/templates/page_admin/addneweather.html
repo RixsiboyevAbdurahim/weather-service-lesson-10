@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Weather Page</title>
+    <link th:replace="~{fragment/fragment :: css}">
+</head>
+<body class="text-center">
+<nav th:replace="~{fragment/fragment :: navbar}"></nav>
+<h1>Add Weather Page</h1>
+<hr>
+<form method="post" action="/addneweather">
+    <label>Temperature</label>
+    <input type="text" name="temperature" placeholder="Temperature" autofocus><br>
+    <label>Description</label>
+    <input type="text" name="description" placeholder="Description" autofocus><br><br>
+    <button class="btn btn-success" type="submit" th:text="'Save'"></button>
+    <button class="btn btn-secondary" type="reset" th:text="#{button_reset}"></button>
+</form>
+<br>
+<a class="btn btn-primary" href="/listcities">Back</a>
+</body>
+</html>

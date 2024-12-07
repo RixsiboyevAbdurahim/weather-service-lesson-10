@@ -2,13 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Page</title>
+    <title>User Page</title>
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link th:replace="~{fragment/fragment :: css}">
 </head>
 <body class="text-center">
 <nav th:replace="~{fragment/fragment :: navbar}"></nav>
-<h1>Admin Page</h1>
+<h1>User Page</h1>
 <hr>
+<a class="btn btn-primary" href="/citiesuser">List Cities</a>
+<a class="btn btn-success" href="/getsubscriptions">Get my Subscriptions</a>
+<hr>
+<a class="btn btn-danger" href="/">Home Page</a>
 </body>
 </html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+    <link th:replace="~{fragment/fragment :: css}">
+</head>
+<body class="text-center">
+<nav th:replace="~{fragment/fragment :: navbar}"></nav>
+<h1>Update User</h1>
+<hr>
+<div th:if="${user_exists}" class="alert alert-danger">
+    <h2 style="color: red" th:text="#{${user_exists}}"></h2>
+</div>
+<form method="post" action="/updateuser">
+    <label th:text="#{username}"></label>
+    <input type="text" name="username" th:value="${user.getUsername()}" autofocus><br><br>
+    <button class="btn btn-success" type="submit" th:text="'Update'"></button>
+    <button class="btn btn-secondary" type="reset" th:text="#{button_reset}"></button>
+</form>
+<br>
+<a class="btn btn-primary" href="/listusers">Back</a>
+</body>
+</html>

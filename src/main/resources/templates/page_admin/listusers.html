@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Users</title>
+    <link th:replace="~{fragment/fragment :: css}">
+</head>
+<body class="text-center">
+<nav th:replace="~{fragment/fragment :: navbar}"></nav>
+<h1>List Users</h1>
+<a class="btn btn-secondary" th:href="@{/register}">Add new User</a>
+<hr>
+<table class="table">
+    <tr>
+        <th>User Name</th>
+        <th>Role</th>
+        <th>Update</th>
+    </tr>
+    <th:block>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.getUsername()}"></td>
+            <td th:text="${user.getRole()}"></td>
+            <td>
+                <form action="/getuser" method="post">
+                    <input type="hidden" name="userId" th:value="${user.getId()}">
+                    <button type="submit">Update</button>
+                </form>
+            </td>
+        </tr>
+    </th:block>
+</table>
+<hr>
+<a class="btn btn-primary" th:href="@{/admin}">Admin Page</a>
+<a class="btn btn-danger" th:href="@{/}">Home Page</a><br>
+</body>
+</html>

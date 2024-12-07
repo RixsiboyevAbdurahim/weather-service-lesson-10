@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>List Cities</title>
+    <link th:replace="~{fragment/fragment :: css}">
+</head>
+<body class="text-center">
+<nav th:replace="~{fragment/fragment :: navbar}"></nav>
+<h1>List Cities</h1>
+<hr>
+<table class="table">
+    <tr>
+        <th>City Name</th>
+        <th>Subscribe to City</th>
+    </tr>
+    <th:block>
+        <tr th:each="city : ${cities}">
+            <td th:text="${city.getName()}"></td>
+            <td>
+                <form action="/subscribe" method="post">
+                    <input type="hidden" name="cityId" th:value="${city.getId()}">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </td>
+        </tr>
+    </th:block>
+</table>
+<hr>
+<a class="btn btn-primary" th:href="@{/user}">User Page</a>
+<a class="btn btn-danger" th:href="@{/}">Home Page</a><br>
+</body>
+</html>
